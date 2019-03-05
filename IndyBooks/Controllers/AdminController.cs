@@ -39,14 +39,22 @@ namespace IndyBooks.Controllers
             {
                 //TODO:Update to use the Name property of the Book's Author entity
                 foundBooks = foundBooks
+                    .Include(b => b.Author)
                              .Where(b => b.Author.Name.EndsWith(search.AuthorLastName, StringComparison.CurrentCulture))
                              ;
+            }
+            if (search.Title == null)
+            {
+                foundBooks = foundBooks
+                    .Include(b => b.Author);
             }
             //Priced Between Search (min and max price entered)
             if (search.MinPrice > 0 && search.MaxPrice > 0)
             {
                 foundBooks = foundBooks
+                    .Include(b => b.Author)
                              .Where(b => b.Price >= search.MinPrice && b.Price <= search.MaxPrice)
+                             .Distinct()
                              .OrderByDescending(b => b.Price)
                              ;
             }
