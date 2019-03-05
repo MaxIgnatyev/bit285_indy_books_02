@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using IndyBooks.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Bogus;
 
 namespace IndyBooks
 {

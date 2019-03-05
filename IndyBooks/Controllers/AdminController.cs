@@ -39,7 +39,7 @@ namespace IndyBooks.Controllers
             {
                 //TODO:Update to use the Name property of the Book's Author entity
                 foundBooks = foundBooks
-                             .Where(b => b.Author.EndsWith(search.AuthorLastName, StringComparison.CurrentCulture))
+                             .Where(b => b.Author.Name.EndsWith(search.AuthorLastName, StringComparison.CurrentCulture))
                              ;
             }
             //Priced Between Search (min and max price entered)
